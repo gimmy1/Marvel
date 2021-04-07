@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    entrypoint: ['/usr/project/app/entrypoint.sh']
+    volumes:
+      - .:/usr/project/app
+    ports:
+      - 5004:5000
+    env_file:
+      - ./.env
+    environment:
+      - FLASK_APP=project/__init__.py
+      - FLASK_ENV=development
+      - APP_SETTINGS=project.config.DevelopmentConfig
+      - DATABASE_URL=postgresql://postgres:postgres@api-db:5432/api_dev
+      - DATABASE_USERNAME=postgres
+      - DATABASE_PASSWORD=postgres
+      - DATABASE_HOST=api-db
+      - DATABASE_PORT=5432
+      - DATABASE_NAME=api_dev
+    depends_on:
+      - api-db
+  
+  api-db:
+    image: postgres:13-alpine
+    build:
+      context: ./project/db
+      dockerfile: Dockerfile
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=marvel
