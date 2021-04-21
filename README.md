@@ -1,4 +1,4 @@
-# BlUEVOYANT
+# BLUEVOYANT
 
 ## Pre-requisites
 Python3.7 or Higher
