@@ -15,10 +15,10 @@ Python3.7 or Higher
 4. Check Docker is up and running. Go to http://localhost:5004/ping
 5. Check Status of DB: `docker-compose exec api python manage.py check_status`
 6. Create DB: `docker-compose exec api python manage.py recreate_db`
-7. Seed DB: ``docker-compose exec api python manage.py seed_db`
+7. Seed DB: `docker-compose exec api python manage.py seed_db`
 8. Check Characters has been seeded.
     * Go to http://localhost:5004/characters
-9. Head to http://localhost:5004/characters/Spectrum/associated 
+9. Head to http://localhost:5004/characters/spectrum/associated 
     - Here you will receive a record of all marvel characters Spectrum has ever encountered.
 
 ## NOTE:
